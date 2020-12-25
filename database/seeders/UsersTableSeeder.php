@@ -6,6 +6,7 @@ use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use App\Models\User;
+use App\Models\Team;
 
 class UsersTableSeeder extends Seeder
 {
@@ -35,6 +36,15 @@ class UsersTableSeeder extends Seeder
         $this->createNormalUsers();
     }
 
+    protected function createTeam(User $user)
+    {
+        $user->ownedTeams()->save(Team::forceCreate([
+            'user_id' => $user->id,
+            'name' => explode(' ', $user->first_name, 2)[0]."'s Team",
+            'personal_team' => true,
+        ]));
+    }
+
     public function createAdmins()
     {
         if(!User::whereEmail('admin@laravel.com')->first())
@@ -47,6 +57,8 @@ class UsersTableSeeder extends Seeder
             ]);
 
             $user->assignRole('admin');
+
+            $this->createTeam($user);
         }
     }
 
@@ -62,6 +74,7 @@ class UsersTableSeeder extends Seeder
             ]);
 
             $user->assignRole('staff');
+            $this->createTeam($user);
         }
     }
 
@@ -77,6 +90,7 @@ class UsersTableSeeder extends Seeder
             ]);
 
             $user->assignRole('user');
+            $this->createTeam($user);
         }
     }
 }
