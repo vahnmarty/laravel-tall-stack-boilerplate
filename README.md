@@ -16,6 +16,7 @@ Basic function of a system is here for TailwindCSS, AlpineJs, Livewire and Larav
 -   Messages and Inbox
 -   Notifications
 -   Laravel X-Components
+-   Social Media Login
 
 ## Plugins
 
