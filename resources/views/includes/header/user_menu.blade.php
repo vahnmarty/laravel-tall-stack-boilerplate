@@ -1,4 +1,4 @@
-<div x-data="{isOpen : false }"
+<div x-data="data()"
      class="ml-3 relative">
     <div>
         <button x-on:click="isOpen = !isOpen"
@@ -44,7 +44,33 @@
            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
            role="menuitem">Settings</a>
         <a href="#"
+           x-on:click="logout()"
            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
            role="menuitem">Logout</a>
+
+        <form id="form-logout"
+              name="formLogout"
+              method="POST"
+              action="{{ route('logout') }}"
+              class="hidden">
+            @csrf
+        </form>
+
     </div>
 </div>
+
+@push('scripts')
+<script>
+    function data() {
+        return {
+            isOpen: false,
+            logout() {
+                var dialog = confirm("Are you sure you want to logout?");
+
+                if (dialog)
+                    document.formLogout.submit()
+            }
+        }
+    }
+</script>
+@endpush
