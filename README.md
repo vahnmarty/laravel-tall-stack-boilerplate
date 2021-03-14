@@ -17,6 +17,8 @@ Basic function of a system is here for TailwindCSS, AlpineJs, Livewire and Larav
 -   Notifications
 -   Laravel X-Components
 -   Social Media Login
+-   Import and Export (Excel)
+-   Generate Printable Files (PDF)
 
 ## Plugins
 
