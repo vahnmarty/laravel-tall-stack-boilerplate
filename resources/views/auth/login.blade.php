@@ -22,6 +22,8 @@
                     </a>
                 </p>
 
+                @include('includes.partials.status')
+
                 @include('includes.partials.errors')
 
                 <form class="space-y-6"
@@ -73,7 +75,7 @@
                         </div>
 
                         <div class="text-sm">
-                            <a href="#"
+                            <a href="{{ route('password.request') }}"
                                class="font-medium text-indigo-600 hover:text-indigo-500">
                                 Forgot your password?
                             </a>
