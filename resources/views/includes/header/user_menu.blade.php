@@ -37,7 +37,7 @@
          role="menu"
          aria-orientation="vertical"
          aria-labelledby="user-menu">
-        <a href="#"
+        <a href="{{ url('user/profile') }}"
            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
            role="menuitem">Your Profile</a>
         <a href="#"
